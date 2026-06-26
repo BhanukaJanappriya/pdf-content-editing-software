@@ -1,0 +1,93 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-brand-50 text-brand-900 font-sans antialiased overflow-hidden select-none;
+    margin: 0;
+    padding: 0;
+  }
+
+  body.dark {
+    @apply bg-brand-950 text-brand-50;
+  }
+}
+
+/* Custom Scrollbar styling for a modern look */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-brand-200 rounded-full transition-colors duration-200;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  @apply bg-brand-300;
+}
+
+.dark ::-webkit-scrollbar-thumb {
+  @apply bg-brand-800;
+}
+
+.dark ::-webkit-scrollbar-thumb:hover {
+  @apply bg-brand-700;
+}
+
+/* Glassmorphism Styles */
+.glass-panel {
+  @apply bg-white/80 backdrop-blur-md border border-brand-100/50 shadow-sm;
+}
+
+.dark .glass-panel {
+  @apply bg-brand-900/80 backdrop-blur-md border-brand-800/50 shadow-md;
+}
+
+/* Selection and Hover Highlights */
+.hover-ring {
+  @apply transition-all duration-200 hover:ring-2 hover:ring-brand-400/50 hover:ring-offset-2;
+}
+
+.dark hover-ring {
+  @apply transition-all duration-200 hover:ring-2 hover:ring-brand-500/50 hover:ring-offset-brand-950;
+}
+
+/* Smooth zoom transition */
+.pdf-page-container {
+  transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Text editor overlay styles */
+.text-span-editable {
+  @apply hover:bg-yellow-100/30 hover:outline hover:outline-1 hover:outline-yellow-500/50 cursor-text select-text transition-all duration-100;
+}
+
+.text-span-editable.editing {
+  @apply bg-white/95 outline outline-2 outline-blue-500 shadow-lg text-black z-50 select-text !important;
+}
+
+.dark .text-span-editable {
+  @apply hover:bg-yellow-500/10 hover:outline-yellow-400/50;
+}
+
+.dark .text-span-editable.editing {
+  @apply bg-brand-950 text-white outline-blue-400;
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(4px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
